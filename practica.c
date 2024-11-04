@@ -35,7 +35,6 @@ void MultEscalar(float vect[N], float vectres[N], float alfa){
     }
 }
 
-
 float Scalar(float vect1[N], float vect2[N]){
     int i;
     float resultat = 0;
@@ -72,6 +71,7 @@ void Projection( float vect1[N], float vect2[N], float vectres[N] ){
         vectres[i]= (scalar_producte / magnitud_elevat) * vect2[i]; 
     } 
 }
+
 //i filas j columnas
 float Infininorm(float M[N][N]){
     int i;
@@ -104,7 +104,6 @@ float Onenorm( float M[N][N] ){
         if (colum_sum > max_sum){
             max_sum = colum_sum;   
         }
-        
     }
     return max_sum;
 }
@@ -118,8 +117,6 @@ float NormFrobenius( float M[N][N] ){
         for(j = 0; j<N;j++){
             sum_cuadrados += (M[i][j]) * (M[i][j]);
         }
-
-        
     }
     return sqrt(sum_cuadrados);
 }
@@ -134,7 +131,6 @@ int DiagonalDom( float M[N][N] ){
         for(j=0;j<N;j++){
             if(j != i){
                 sum += fabs(M[i][j]);
-
             }
         }
         if (valor_diagonal < sum){
@@ -151,8 +147,6 @@ void Matriu_x_Vector(float Mat[N][N], float vect[N], float vectres[N] ){
             vectres[i] += Mat[i][j] * vect[j];
         } 
     }
-
-
 }
 
 int Jacobi( float Mat[N][N] , float vect[N], float vectres[N], unsigned iter ){
@@ -169,7 +163,6 @@ int Jacobi( float Mat[N][N] , float vect[N], float vectres[N], unsigned iter ){
             return 0; 
                 
         }
-
     }
     for (unsigned k = 0; k < iter; k++){
         for(i=0; i<N; i++){
