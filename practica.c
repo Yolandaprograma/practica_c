@@ -10,9 +10,6 @@ float Mat [N][N], MatDD[N][N];
 #define Mat(i, j) Mat[i][j]
 #define MatDD(i, j) MatDD[i][j]
 
-
-
-
 void PrintVect(float vect[N],int from, int numel){
     int i;
     for (i = from; i<from + numel; i++){
