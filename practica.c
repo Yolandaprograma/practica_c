@@ -23,7 +23,6 @@ void PrintRow( float Mat[N][N], int row, int from, int numel){
     for(i = from; i < from + numel;i++){
         printf("%.6f  ", Mat[row][i]);
     }
- 
     printf("\n");
 }
 
@@ -85,8 +84,7 @@ float Infininorm(float M[N][N]){
         }
         if (fila_sum > max_sum){
             max_sum = fila_sum;   
-        }
-        
+        }  
     }
     return max_sum;
 }
