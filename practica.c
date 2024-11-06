@@ -71,7 +71,7 @@ void Projection( float vect1[N], float vect2[N], float vectres[N] ){
     } 
 }
 
-
+//i filas j columnas
 float Infininorm(float M[N][N]){
     int i;
     int j;
@@ -84,7 +84,7 @@ float Infininorm(float M[N][N]){
         }
         if (fila_sum > max_sum){
             max_sum = fila_sum;   
-        }
+        }  
     }
     return max_sum;
 }
