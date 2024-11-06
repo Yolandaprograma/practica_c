@@ -3,13 +3,12 @@
 #include <math.h>
 
 #define N 512
-#define Mat(i, j) Mat[i][j]
-#define MatDD(i, j) MatDD[i][j]
 #define MAX_ITER 1000
-
 float V1[N], V2[N], V3[N];
 float Mat [N][N], MatDD[N][N];
 
+#define Mat(i, j) Mat[i][j]
+#define MatDD(i, j) MatDD[i][j]
 
 void PrintVect(float vect[N],int from, int numel){
     int i;
@@ -24,7 +23,6 @@ void PrintRow( float Mat[N][N], int row, int from, int numel){
     for(i = from; i < from + numel;i++){
         printf("%.6f  ", Mat[row][i]);
     }
- 
     printf("\n");
 }
 
@@ -35,7 +33,6 @@ void MultEscalar(float vect[N], float vectres[N], float alfa){
         //printf("%.6f ", vectres[i]);
     }
 }
-
 
 float Scalar(float vect1[N], float vect2[N]){
     int i;
@@ -74,6 +71,7 @@ void Projection( float vect1[N], float vect2[N], float vectres[N] ){
     } 
 }
 
+
 float Infininorm(float M[N][N]){
     int i;
     int j;
@@ -87,7 +85,6 @@ float Infininorm(float M[N][N]){
         if (fila_sum > max_sum){
             max_sum = fila_sum;   
         }
-        
     }
     return max_sum;
 }
@@ -105,7 +102,6 @@ float Onenorm( float M[N][N] ){
         if (colum_sum > max_sum){
             max_sum = colum_sum;   
         }
-        
     }
     return max_sum;
 }
@@ -119,8 +115,6 @@ float NormFrobenius( float M[N][N] ){
         for(j = 0; j<N;j++){
             sum_cuadrados += (M[i][j]) * (M[i][j]);
         }
-
-        
     }
     return sqrt(sum_cuadrados);
 }
@@ -135,7 +129,6 @@ int DiagonalDom( float M[N][N] ){
         for(j=0;j<N;j++){
             if(j != i){
                 sum += fabs(M[i][j]);
-
             }
         }
         if (valor_diagonal < sum){
@@ -152,8 +145,6 @@ void Matriu_x_Vector(float Mat[N][N], float vect[N], float vectres[N] ){
             vectres[i] += Mat[i][j] * vect[j];
         } 
     }
-
-
 }
 
 int Jacobi( float Mat[N][N] , float vect[N], float vectres[N], unsigned iter ){
@@ -170,7 +161,6 @@ int Jacobi( float Mat[N][N] , float vect[N], float vectres[N], unsigned iter ){
             return 0; 
                 
         }
-
     }
     for (unsigned k = 0; k < iter; k++){
         for(i=0; i<N; i++){
