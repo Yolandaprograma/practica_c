@@ -3,14 +3,12 @@
 #include <math.h>
 
 #define N 512
-#define MAX_ITER 1000
-float V1[N], V2[N], V3[N];
-float Mat [N][N], MatDD[N][N];
-
 #define Mat(i, j) Mat[i][j]
 #define MatDD(i, j) MatDD[i][j]
+#define MAX_ITER 1000
 
-
+float V1[N], V2[N], V3[N];
+float Mat [N][N], MatDD[N][N];
 
 
 void PrintVect(float vect[N],int from, int numel){
@@ -75,7 +73,7 @@ void Projection( float vect1[N], float vect2[N], float vectres[N] ){
         vectres[i]= (scalar_producte / magnitud_elevat) * vect2[i]; 
     } 
 }
-//i filas j columnas
+
 float Infininorm(float M[N][N]){
     int i;
     int j;
@@ -212,70 +210,29 @@ void InitData(){
 
 int main(){
     InitData();
+    printf("Apartat A:\n");
+    printf("V1 del 0 al 9 i del 256 al 265:\n");
     PrintVect(V1,0,10);
     PrintVect(V1,256,10);
+    printf("V2 del 0 al 9 i del 256 al 265:\n");
     PrintVect(V2,0,10);
     PrintVect(V2,256,10);
+    printf("V3 del 0 al 9 i del 256 al 265:\n");
     PrintVect(V3,0,10);
     PrintVect(V3,256,10);
-    printf("Este es el punto 2:\n");
+    printf("\n");
+    printf("Apartat B:\n");
+    printf("Mat fila 0 i fila 100 del 0 al 9:\n");
     PrintRow(Mat, 0, 0, 10);
     PrintRow(Mat, 100, 0, 10);
+    printf("\n");
+    printf("Apartat C:\n");
+    printf("MatDD fila 0 del 0 al 9 i fila 100 del 95 al 104:");
     PrintRow(MatDD, 0, 0, 10);
     PrintRow(MatDD, 100, 95, 10);
     //MultEscalar(V1, V2, 2.5);
-
-    printf("Este es el punto E: Calcular productes escalars\n");
-    float resultat_1 = Scalar(V1, V2);
-    printf("El producte escalar de los vectores V1, V2: %f\n", resultat_1);
-    float resultat_2 = Scalar(V1, V3);
-    printf("El producte escalar de los vectores V1, V3: %f\n", resultat_2);
-    float resultat_3 = Scalar(V2, V3);
-    printf("El producte escalar de los vectores V2, V3: %f\n", resultat_3);
-
-    printf("Este es el punto F: Magnituds\n");
-    float magnitud_v1 = Magnitude(V1);
-    printf("La magnitud del vector és: %f\n", magnitud_v1);
-    float magnitud_v2 = Magnitude(V2);
-    printf("La magnitud del vector és: %f\n", magnitud_v2);
-    float magnitud_v3 = Magnitude(V3);
-    printf("La magnitud del vector és: %f\n", magnitud_v3);
-
-    printf("Este es el punto G: Són Ortogonal\n");
-    if (Ortogonal(V1,V2)){;
-        printf("Els vectors V1, V2 són ortogonals.\n");
-    } else {
-        printf("Els vectors V1, V2 no són ortogonals.\n");
-    }
-      if (Ortogonal(V1,V3)){;
-        printf("Els vectors V1, V3 són ortogonals.\n");
-    } else {
-        printf("Els vectors V1, V3 no són ortogonals.\n");
-    }
-      if (Ortogonal(V2,V3)){;
-        printf("Els vectors V2, V3 són ortogonals.\n");
-    } else {
-        printf("Els vectors V2, V3 no són ortogonals.\n");
-    }    
-
-    printf("Este es el punto H:\n");
-    
-    float V3_resultat[N];
-    MultEscalar(V3, V3_resultat, 2.0);
-    printf("Elements 0 al 9 del resultat de multiplicar V3 x 2.0 són:\n");
-    PrintVect(V3_resultat, 0, 10);
-    printf("Elements 256 al 265 del resultat de multiplicar V3 x 2.0 són:\n");
-    PrintVect(V3_resultat, 256, 10);
-
-    printf("Este es el punto I:\n");
-    float V_Project[N];
-    Projection(V2,V3,V_Project);
-    PrintVect(V_Project, 0, 10);
-    float Vn_Project[N];
-    Projection(V1,V2,Vn_Project);
-    PrintVect(Vn_Project, 0, 10);
-
-    printf("Este es el punto D:\n");
+    printf("\n");    
+    printf("Apartat D:\n");
     float uni_f =Infininorm(Mat);
     printf("Infininorma de Mat %.3f \n", uni_f);
 
@@ -291,7 +248,6 @@ int main(){
     }else{
         printf("La matriu no és diagonal dominant\n");
     }
-
     float dd_uni = Infininorm(MatDD);
     printf("Infininorma de MatDD %.3f \n", dd_uni);
 
@@ -307,32 +263,79 @@ int main(){
     }else{
         printf("La matriu no és diagonal dominant\n");
     }
-
-    printf("Este es el punto J:\n");
+    printf("\n");    
+    printf("Apartat E:\n");
+    float resultat_1 = Scalar(V1, V2);
+    printf("El producte escalar de los vectores V1, V2: %f\n", resultat_1);
+    float resultat_2 = Scalar(V1, V3);
+    printf("El producte escalar de los vectores V1, V3: %f\n", resultat_2);
+    float resultat_3 = Scalar(V2, V3);
+    printf("El producte escalar de los vectores V2, V3: %f\n", resultat_3);
+    printf("\n");
+    printf("Apartat F:\n");
+    float magnitud_v1 = Magnitude(V1);
+    printf("La magnitud del vector és: %f\n", magnitud_v1);
+    float magnitud_v2 = Magnitude(V2);
+    printf("La magnitud del vector és: %f\n", magnitud_v2);
+    float magnitud_v3 = Magnitude(V3);
+    printf("La magnitud del vector és: %f\n", magnitud_v3);
+    printf("\n");
+    printf("Apartat G:\n");
+    if (Ortogonal(V1,V2)){;
+        printf("Els vectors V1, V2 són ortogonals.\n");
+    } else {
+        printf("Els vectors V1, V2 no són ortogonals.\n");
+    }
+      if (Ortogonal(V1,V3)){;
+        printf("Els vectors V1, V3 són ortogonals.\n");
+    } else {
+        printf("Els vectors V1, V3 no són ortogonals.\n");
+    }
+      if (Ortogonal(V2,V3)){;
+        printf("Els vectors V2, V3 són ortogonals.\n");
+    } else {
+        printf("Els vectors V2, V3 no són ortogonals.\n");
+    }    
+    printf("\n");
+    printf("Apartat H:\n");
+    float V3_resultat[N];
+    MultEscalar(V3, V3_resultat, 2.0);
+    printf("Elements 0 al 9 del resultat de multiplicar V3 x 2.0 són:\n");
+    PrintVect(V3_resultat, 0, 10);
+    printf("Elements 256 al 265 del resultat de multiplicar V3 x 2.0 són:\n");
+    PrintVect(V3_resultat, 256, 10);
+    printf("\n");
+    printf("Apartat I:\n");
+    float V_Project[N];
+    Projection(V2,V3,V_Project);
+    printf("Els elements 0 a 9 del resultat de la projecció de V2 sobre V3 són:\n");
+    PrintVect(V_Project, 0, 10);
+    float Vn_Project[N];
+    Projection(V1,V2,Vn_Project);
+    printf("Els elements 0 a 9 del resultat de la projecció de V1 sobre V2 són:\n");
+    PrintVect(Vn_Project, 0, 10);
+    printf("\n");
+    printf("Apartat J:\n");
     float vectres[N];
     Matriu_x_Vector(Mat,V2,vectres);
+    printf("Els elements 0 a 9 del resultat de la multiplicació de Mat per v2 són:\n");
     PrintVect(vectres, 0, 10);
-    
-    printf("Este es el punto K:\n");
+    printf("\n");
+    printf("Apartat K:\n");
     float X[N] = {0};
     if(Jacobi(MatDD, V3, X, 1)){
         printf("Els elements 0 a 9 de la solució (1 iter) del sistema d'equacions són:\n");
         PrintVect(X, 0, 10);
-    } else {
-        printf("No es pot aplicar el metod de Jacobi.\n");
-    }
+    } 
     if(Jacobi(MatDD, V3, X, 1000)){
-        printf("Els elements 0 a 9 de la solució (1000 iters) del sistema d'equacions són:\n");
-        PrintVect(X, 0, 10);
-    } else {
-        printf("No es pot aplicar el metod Jacobi.\n");
-    }
-
-      printf("Intentando resolver Mat * X = V3:\n");
-    if (Jacobi(Mat, V3, X, 1000)) {
         printf("Els elements 0 a 9 de la solució (1000 iters) del sistema d'equacions són:\n");
         PrintVect(X, 0, 10);
     } 
 
-    return 0;
+      printf("Mat * X = V3:\n");
+    if (Jacobi(Mat, V3, X, 1000)) {
+        printf("Els elements 0 a 9 de la solució (1000 iters) del sistema d'equacions són:\n");
+        PrintVect(X, 0, 10);
+    } 
+    
 }
