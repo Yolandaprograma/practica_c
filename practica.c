@@ -1,4 +1,3 @@
-
 //Llibreries necessàries 
 #include <stdio.h>
 #include <stdlib.h>
