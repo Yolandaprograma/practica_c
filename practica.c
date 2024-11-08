@@ -23,6 +23,7 @@ void PrintVect(float vect[N],int from, int numel){
     }
     printf("\n"); //Imprimeix un salt de línia per organitzar millor la sortida
 }
+
 //Funció per imprimir una fila de la matriu en un rang de columnes
 void PrintRow( float Mat[N][N], int row, int from, int numel){
     int i; //Declarem variable i per iterar
@@ -31,6 +32,7 @@ void PrintRow( float Mat[N][N], int row, int from, int numel){
     }
     printf("\n");
 }
+
 //La funció multiplica cada element del vector vect per el valor alfa i emmagatzema el resultat en el vector vectres.
 void MultEscalar(float vect[N], float vectres[N], float alfa){
     int i; //Declarem variable i per iterar sobre els elements del vector
@@ -38,6 +40,7 @@ void MultEscalar(float vect[N], float vectres[N], float alfa){
         vectres[i] = vect[i] * alfa; //Multiplicació de cada element del vector per l'escala alfa i emmagatzemem el resultat en el vector vectres a la mateixa posició
     }
 }
+
 //Funció per calcular el producte escalar entre dos vectors
 float Scalar(float vect1[N], float vect2[N]){
     int i; //Declarem la variable i per iterar sobre els elements dels vectors
@@ -47,6 +50,7 @@ float Scalar(float vect1[N], float vect2[N]){
 	}
     return resultat; //Retornem el valor final del producte escalar
 }
+
 //Funció per calcular la magnitud d'un vector
 float Magnitude( float vect[N] ){
     int i; //Declarem la variable i per iterar sobre els elements de vector 
@@ -56,6 +60,7 @@ float Magnitude( float vect[N] ){
     }
     return sqrt(sum); //Retornem l'arrel de la suma dels quadrats dels elements del vector
 }
+
 //Funció per provocar si dos vectors són ortogonals
 int Ortogonal( float vect1[N], float vect2[N] ){
     //Es calcula el producte escalar entre els dos vectors
@@ -67,6 +72,7 @@ int Ortogonal( float vect1[N], float vect2[N] ){
         return 0;
     }
 }
+
 //Funció per calcular la projecció d'un vector sobre un altre vector
 void Projection( float vect1[N], float vect2[N], float vectres[N] ){
     int i; //Declarem la variable i per iterar sobre els elements dels vectors
@@ -78,12 +84,12 @@ void Projection( float vect1[N], float vect2[N], float vectres[N] ){
         vectres[i]= (scalar_producte / magnitud_elevat) * vect2[i]; 
     } 
 }
+
 //Funció per calcular la norma infinita d'una matriu
 float Infininorm(float M[N][N]){
     int i; //Declarem variables i per iterar sobre les files de la matriu
     int j; //Declarem variable j per iterar sobre les columnes de la matriu
     float max_sum = 0; //Inicialitzem max_sum per emmagatzema la màxima suma de les files
-    
     for (i = 0; i < N; i++){//Bucle per iterar sobre cada fila de la matriu
         float fila_sum = 0; //Iniciliatzem fila_sum per acumular la suma absoluta de la fila actual 
         for(j = 0; j<N;j++){ //Bucle per iterar sobre cada element de la fila i
@@ -95,12 +101,12 @@ float Infininorm(float M[N][N]){
     }
     return max_sum; //Retornem la màxima suma absoluta de les files
 }
+
 //Funció per calcular la norma 1 d'una matriu
 float Onenorm( float M[N][N] ){
     int i; //Declarem i per iterar sobre les files
     int j; //Declarem j per iterar sobre les columnes de la matriu
     float max_sum = 0; //Inicialitzem max_sum per emmagatzemar la màxima suma de les columnes
-    
     for (j = 0; j < N; j++){ //Bucle per iterar cada columna de la matriu
         float colum_sum = 0; //Inicialitzem colum_sum per acumular la suma absoluta de la columna actual
         for(i = 0; i<N;i++){ //Bucle per iterar sobre cada element de la columna j
@@ -113,6 +119,7 @@ float Onenorm( float M[N][N] ){
     }
     return max_sum; //Retornem la màxima suma absoluta de les columnes
 }
+
 //Funció per calcular la norma de Frobenius d'una matriu
 float NormFrobenius( float M[N][N] ){
     int i; //Declarem variable i per iterar sobre les files
@@ -125,6 +132,7 @@ float NormFrobenius( float M[N][N] ){
     }
     return sqrt(sum_cuadrados); //Retornem l'arrel quadrada de la suma dels quadrats de tots els elements de la matriu
 }
+
 //Funció per verificar si una matriu és diagonal dominant
 int DiagonalDom( float M[N][N] ){
     int i; //Declarem i per iterar sobre les files
@@ -144,6 +152,7 @@ int DiagonalDom( float M[N][N] ){
     }
     return 1; //Si totes les files compleixen la condició, retornem 1, la matriu és diagonal dominant 
 }
+
 //Funció per multiplicar una matriu per un vector
 void Matriu_x_Vector(float Mat[N][N], float vect[N], float vectres[N] ){
     int i, j; //Declarem les variable i, j per iterar sobre les files i columnes de la matriu
@@ -154,6 +163,7 @@ void Matriu_x_Vector(float Mat[N][N], float vect[N], float vectres[N] ){
         } 
     }
 }
+
 //Funció de Jacobi per a la resolució d'un sistema d'equacions lineals de la forma Ax = b
 int Jacobi( float Mat[N][N] , float vect[N], float vectres[N], unsigned iter ){
     int i,j; //Variables per a les iteracions sobres les files i, columnes j
